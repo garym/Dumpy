@@ -1,4 +1,4 @@
-dulpy
+Dumpy
 =====
 
 A decorator and utility library.
