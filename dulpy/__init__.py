@@ -14,8 +14,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import time
 
-def retry(ntimes, exceptions=None):
+
+def retry(ntimes, exceptions=None, timeout=0):
     """decorator for retrying a function a given number of times on
     exceptions"""
     if exceptions is None:
@@ -23,11 +25,14 @@ def retry(ntimes, exceptions=None):
 
     def run(func):
         def f(*args, **kwargs):
+            starttime = time.time()
             for i in range(ntimes):
                 try:
                     return func(*args, **kwargs)
                 except exceptions:
                     if i == ntimes - 1:
+                        raise
+                    if timeout and time.time() - starttime > timeout:
                         raise
         return f
     return run
