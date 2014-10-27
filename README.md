@@ -44,8 +44,8 @@ from dumpy import retry
 
 @retry(5, ZeroDivisionError, 0.02)
 def test_function():
-    print('if this test results in a ZeroDivisionError each time, this will '
-          'repeat 5 times, as long as it doesn't take more than 0.02s to run.')
+    print("if this test results in a ZeroDivisionError each time, this will "
+          "repeat 5 times, as long as it doesn't take more than 0.02s to run.")
     time.sleep(0.05)
     1 / 0
 ```
