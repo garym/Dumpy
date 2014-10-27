@@ -21,7 +21,7 @@ try:
 except ImportError:
     import mock
 
-from dulpy import retry
+from dumpy import retry
 
 
 class TestException(Exception):

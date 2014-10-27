@@ -17,13 +17,13 @@
 from setuptools import setup
 
 setup(
-    name='dulpy',
+    name='Dumpy',
     description='A utility library of decorators',
     version='0.1.0',
     author='Gary Martin',
     author_email='gary.martin@wandisco.com',
-    packages=['dulpy', 'dulpy.test'],
+    packages=['dumpy', 'dumpy.test'],
     license='LICENSE.txt',
     test_requires=['Mock'],
-    test_suite="dulpy.test",
+    test_suite="dumpy.test",
 )
