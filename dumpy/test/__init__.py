@@ -77,6 +77,24 @@ class TestRetryDecorator(unittest.TestCase):
         self.assertRaises(self.exception, myfunc)
         self.assertNotEqual(self.fn.call_count, self.n)
 
+    def test_exceptions_can_be_specified_as_tuple(self):
+        """repeat when a tuple of exceptions is specified"""
+        @retry(self.n, (self.exception, ))
+        def myfunc():
+            self.fn()
+
+        self.assertRaises(self.exception, myfunc)
+        self.assertEqual(self.fn.call_count, self.n)
+
+    def test_exceptions_can_be_specified_as_list(self):
+        """repeat when a list of exceptions is specified"""
+        @retry(self.n, [self.exception, ])
+        def myfunc():
+            self.fn()
+
+        self.assertRaises(self.exception, myfunc)
+        self.assertEqual(self.fn.call_count, self.n)
+
     def test_function_arguments_respected(self):
         """check that args are passed through"""
         @retry(self.n)

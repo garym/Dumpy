@@ -22,6 +22,8 @@ def retry(ntimes, exceptions=None, timeout=0):
     exceptions"""
     if exceptions is None:
         exceptions = Exception
+    elif isinstance(exceptions, list):
+        exceptions = tuple(exceptions)
 
     def run(func):
         def f(*args, **kwargs):
